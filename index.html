@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user portal</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col text-center">
+                <button class="btn btn-large btn-info" id="btn-view" onclick="renderUSerCards();">
+                    VIEW USERS</button>
+                <button class="btn btn-large btn-info" data-toggle="modal" data-target="#adduser">
+                    ADD NEW USER
+                </button>
+                <button class="btn btn-danger" onclick="window.location.href='index.html';">BACK
+                </button>
+            </div>
+        </div>
+        <div class="row usercards mt-5 pt-5">
+            
+        </div>
+        
+    </div>
+    <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="adduserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adduser">ADD NEW USER</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off" onsubmit="event.preventDefault();onFormSubmit();" id="add-user-form" name="add-user-form">
+                        <div class="form-group">
+                            <label class="modal-label" for="emp_no">Employee Number</label>
+                            <div>
+                                <input type="number" name="employeeno" class="form-control modal-input" id="emp_no" aria-describedby="employeeno" required="">
+                            </div>
+                            <label class="modal-label" for="name">First Name</label>
+                            <div>
+                                <input type="text" name="fname" class="form-control modal-input" id="fname" aria-describedby="fname" required="">
+                            </div>
+                            <label class="modal-label" for="name">Last Name</label>
+                            <div>
+                                <input type="text" name="lname" class="form-control modal-input" id="lname" aria-describedby="lname" required="">
+                            </div>
+			                <label class="modal-label" for="mobile">Mobile number</label>
+                            <div>
+                                <input type="text" name="mobile" class="form-control modal-input" id="mobile" aria-describedby="mobile" required="">
+                            </div>
+			                <label class="modal-label" for="Email">Email address</label>
+                            <div>
+                                <input type="email" name="email" class="form-control modal-input" id="email" aria-describedby="Email" required="">
+                            </div>
+			            </div>
+                        <div class="claim-button text-center">
+                            <button type="submit" class="btn btn-dark">ADD</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- edit modal-->
+    <div class="modal fade" id="edituser" tabindex="-1" aria-labelledby="edituserLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="edituser">EDIT USER</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form autocomplete="off" onsubmit="event.preventDefault();onEditFormSubmit();" id="edit-user-form" name="add-user-form">
+                        <div class="form-group">
+                            <label class="modal-label" for="emp_no">Employee Number</label>
+                            <div>
+                                <input type="number" name="employeeno" class="form-control modal-input" id="eemp_no" aria-describedby="employeeno" disabled=true>
+                            </div>
+                            <label class="modal-label" for="name">First Name</label>
+                            <div>
+                                <input type="text" name="fname" class="form-control modal-input" id="efname" aria-describedby="fname" required="">
+                            </div>
+                            <label class="modal-label" for="name">Last Name</label>
+                            <div>
+                                <input type="text" name="lname" class="form-control modal-input" id="elname" aria-describedby="lname" required="">
+                            </div>
+			                <label class="modal-label" for="mobile">Mobile number</label>
+                            <div>
+                                <input type="text" name="mobile" class="form-control modal-input" id="emobile" aria-describedby="mobile" required="">
+                            </div>
+			                <label class="modal-label" for="Email">Email address</label>
+                            <div>
+                                <input type="email" name="email" class="form-control modal-input" id="eemail" aria-describedby="Email" required="">
+                            </div>
+			            </div>
+                        <div class="claim-button text-center">
+                            <button type="submit" class="btn btn-dark">UPDATE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
